@@ -1,4 +1,5 @@
 import os
+import logging
 from logging.config import dictConfig
 from dotenv import load_dotenv
 
@@ -35,6 +36,7 @@ LOGGING_CONFIG = {
             "level": "INFO",
             "class": "logging.FileHandler",
             "filename": "logs/infos.log",
+            "formatter": "verbose",
             "mode": "w"
 		}
 	},
