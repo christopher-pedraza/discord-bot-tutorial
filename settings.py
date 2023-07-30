@@ -1,3 +1,4 @@
+import pathlib
 import os
 import logging
 from logging.config import dictConfig
@@ -8,6 +9,9 @@ load_dotenv()
 # Gets the discord api token from the .env file so
 # we don't include it inside the code
 DISCORD_API_SECRET = os.getenv("DISCORD_API_TOKEN")
+
+BASE_DIR = pathlib.Path(__file__).parent
+CMDS_DIR = BASE_DIR / "cmds"
 
 # Configuration to log messages
 LOGGING_CONFIG = {
