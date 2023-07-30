@@ -15,7 +15,22 @@ def run():
 	async def on_ready():
 		logger.info(f"User: {bot.user} (ID: {bot.user.id})")
 
-	
+	# To handle errors globally
+	@bot.event
+	async def on_command_error(ctx, error):
+		if isinstance(error, commands.MissingRequiredArgument):
+			await ctx.send("handled error globally")
+
+	# Adds 2 numbers together
+	@bot.command()
+	async def add(ctx, num1:float, num2:float):
+		await ctx.send(num1 + num2)
+
+	# # To handle errors locally
+	# @add.error
+	# async def add_error(ctx, error):
+	# 	if isinstance(error, commands.MissingRequiredArgument):
+	# 		await ctx.send("handled error locally")
 
 	bot.run(settings.DISCORD_API_SECRET, root_logger=True)
 
